@@ -6,19 +6,21 @@ import Header from '../../component/Header/Header';
 import Cardp from '../../component/CardData/Card';
 import Card from '../../component/CardPopuler/Card';
 
-export default function HomePage() {
+const HomePage = () => {
+  const [DiSuka, setDisuka] =useState (0)
+
   return (
     <ScrollView style={styles.container}>
-      <Header />
-      <View>
-        <Text style={styles.texs}>TRENDING</Text>
-        <Cardp />
-      </View>
-      <View>
-        <Card />
-      </View>
-    </ScrollView>
-  )
+    <Header suka={DiSuka}/>
+    <View>
+      <Text style={styles.texs}>TRENDING</Text>
+      <Cardp onButtom={() => setDisuka(DiSuka + 1)}/>
+    </View>
+    <View>
+      <Card onButtom={() => setDisuka(DiSuka + 1)}/>
+    </View>
+  </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -36,3 +38,5 @@ const styles = StyleSheet.create({
     height: 280,
   },
 })
+
+export default HomePage;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, Image } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Image,TouchableOpacity } from 'react-native'
 
 
-export default function Card() {
+export default function Card(props) {
     const [data, setdata] = useState([
         {
             judul: 'nama novel',
@@ -38,8 +38,13 @@ export default function Card() {
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) =>
                     <View style={styles.conten}>
+                        <TouchableOpacity 
+                        onPress={props.onButtom} style={ styles.touch}>
+                            <Text style={styles.like}>suka</Text>
+                        </TouchableOpacity>
                         <Image source={item.image} style={styles.image} />
                         <Text style={styles.Text}>{item.judul}</Text>
+                        
                     </View>} />
         </View>
     )
@@ -58,11 +63,22 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 20,
         marginHorizontal: 25,
-        marginTop: 20
+        marginTop: 10
     },
     Text: {
         marginHorizontal: 35,
         textAlign: 'center',
         marginTop: 15
     },
+    touch :{
+        width: 80,
+        height: 20,
+        elevation: 1,
+        marginHorizontal: 60,
+        marginTop: 10,
+        borderRadius: 10
+    },
+    like : {
+        textAlign: 'center'
+    }
 });
