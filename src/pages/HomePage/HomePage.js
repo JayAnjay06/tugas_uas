@@ -1,57 +1,38 @@
-import { StyleSheet, Text, View,FlatList, Image } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Image, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react';
 
 //component
 import Header from '../../component/Header/Header';
+import Cardp from '../../component/CardData/Card';
+import Card from '../../component/CardPopuler/Card';
 
 export default function HomePage() {
-  const [data, setdata] = useState([
-    {
-      judul: 'nama novel',
-      image: require('../../assets/Images/1.png')
-    },
-    {
-      judul: 'nama novel',
-      image: require('../../assets/Images/2.png')
-    },
-    {
-      judul: 'nama novel',
-      image: require('../../assets/Images/3.png')
-    },
-    {
-      judul: 'nama novel',
-      image: require('../../assets/Images/4.png')
-    },
-    {
-      judul: 'nama novel',
-      image: require('../../assets/Images/5.png')
-    },
-  ]);
   return (
-    <View>
-      <Header/>
+    <ScrollView style={styles.container}>
+      <Header />
       <View>
-        <FlatList
-          data={data}
-          horizontal
-          showsHorizontalScrollIndicatorhorizontal={false}
-            renderItem={({ item }) =>
-            <View>
-              <Image source={item.image} style={styles.image} />
-              <Text style={styles.Text}>{item.judul}</Text>
-            </View>}/>
+        <Text style={styles.texs}>TRENDING</Text>
+        <Cardp />
       </View>
-    </View>
+      <View>
+        <Card />
+      </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  image: {
-    height: 220,
-    width: 150,
-    marginHorizontal:20
+  container: {
+    flex: 1,
+    backgroundColor: '#C5D2D8'
   },
-  Text:{
-    marginHorizontal: 35
-  }
+  texs: {
+    fontSize: 20,
+    marginLeft: 20,
+    marginTop: 10
+  },
+  conten: {
+    marginTop: 20,
+    height: 280,
+  },
 })
